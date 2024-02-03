@@ -1,0 +1,17 @@
+{
+    "name": "rust-html-component",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "build-rs": "cargo build --release --target wasm32-unknown-unknown && mkdir -p ./build && wasm-tools component new ./target/wasm32-unknown-unknown/release/rust_html_bindgen.wasm -o ./build/rust_html_bindgen.wasm",
+      "jco": "jco transpile ./build/rust_html_bindgen.wasm --optimize --tla-compat --no-nodejs-compat --instantiation async --no-namespaced-exports --no-wasi-shim -o pkg",
+      "build": "npm run build-rs && npm run jco"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@bytecodealliance/jco": "^1.0.0"
+    }
+  }
+  
